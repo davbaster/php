@@ -17,7 +17,14 @@
 
 		$curso2 = new Curso('Javascript', 'Alvaro Felipe', '6 Sesiones', 10, true);
 
-		echo $curso1->obtenerTitulo();
+		echo $curso1->obtenerTitulo().'<br />';
+		$curso1->asignarTitulo("POO en PHP 2020");
+		echo $curso1->obtenerTitulo().'<br />';
+
+
+		// echo $curso1->obtenerProfesor().'<br />';
+		// $curso1->asignarTitulo('POO en PHP 2020');
+		// echo $curso1->obtenerProfesor().'<br />';
 
 	?>
 	

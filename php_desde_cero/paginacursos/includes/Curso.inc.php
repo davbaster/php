@@ -36,7 +36,7 @@ class Curso {
 	}
 
 	#setter
-	public function asginarTitulo($titulo){
+	public function asignarTitulo($titulo){
 		$this->titulo = $titulo;
 	}
 
