@@ -13,7 +13,9 @@
 		define('INC', '/includes/');
 		require_once __DIR__ . INC .'Curso.inc.php';
 
+		$curso1 = new Curso('POO en PHP', 'Yesi Days', '3 Sesiones', 10, true);
 
+		$curso2 = new Curso('Javascript', 'Alvaro Felipe', '6 Sesiones', 10, true);
 
 
 
