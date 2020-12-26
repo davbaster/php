@@ -17,9 +17,9 @@
 
 		$curso2 = new Curso('Javascript', 'Alvaro Felipe', '6 Sesiones', 10, true);
 
+		echo $curso1->obtenerTitulo();
 
-
-		?>
+	?>
 	
 </body>
 </html>

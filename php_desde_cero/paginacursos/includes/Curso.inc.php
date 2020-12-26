@@ -3,7 +3,7 @@
 
 class Curso {
 
-	private $nombre;
+	private $titulo;
 	private $duracion;
 	private $costo;
 	private $moneda;
@@ -15,11 +15,12 @@ class Curso {
 	public function __construct($titulo, $profesor, $duracion, $costo, $disponible){
 
 
-		this->titulo = $titulo;
-		this->profesor = $profesor;
-		this->duracion = $duracion;
-		this->costo = $costo;
-		this->disponible = $disponible;
+		$this->titulo = $titulo;
+		$this->duracion = $duracion;
+		$this->costo = $costo;
+		$this->moneda = 'Dollar';
+		$this->profesor = $profesor;
+		$this->disponible = $disponible;
 
 	}
 
@@ -53,13 +54,11 @@ class Curso {
 		return (($this->disponible) ? "Esta disponible.<br />" : "No esta disponible<br /> ") ;
 	}
 
-
-
-
-
-	
 }
 
+	// $curso3 = new Curso('POO en PHP', 'David Cordoba', '3 Sesiones', 10, true); 
+	// echo $curso3->obtenerTitulo();
 
+	// echo "Codigo esta sirviendo";
 
 ?>
