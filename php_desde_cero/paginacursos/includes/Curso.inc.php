@@ -1,7 +1,18 @@
 <?php
 
+#interfaces->interface
+interface Requerimiento {
+	public function asignarRequerimiento($listado);
+	public function obtenerRequerimiento();
+}
 
-class Curso {
+interface Conocimiento {
+	public function asignarConocimiento($listado);
+	public function obtenerConocimiento();
+}
+
+
+class Curso  implements Requerimiento, Conocimiento {
 
 	private $titulo;
 	private $duracion;
@@ -54,11 +65,44 @@ class Curso {
 		return (($this->disponible) ? "Esta disponible.<br />" : "No esta disponible<br /> ") ;
 	}
 
-}
+	#interfaces metodos
+	public function asignarRequerimiento($listado){
+		$this->listado = $listado;
+	}
+
+	public function obtenerRequerimiento(){
+		if (!empty($this->listado)) {
+			foreach ($this->listado as $elemento) {
+				echo "<p>".$eleemnto."</p>";
+			}
+		}else{
+
+				echo "<p>".$lista."</p>";
+		}
+	}
+
+	public function asignarConocimiento($listado){
+
+		$this->conocimientos = $listado;
+	}
+	public function obtenerConocimiento(){
+		if(!empty($this->conocimiento)){
+			foreach ($conocimientos as $conocimiento) {
+				echo "<p>".$conocimiento."</p>";
+			}
+		}else{
+			echo "<p>".$lista."</p>";
+		}
+	}
+
+
+
+}//fin de la clase Curso
+
 
 	// $curso3 = new Curso('POO en PHP', 'David Cordoba', '3 Sesiones', 10, true); 
 	// echo $curso3->obtenerTitulo();
 
-	// echo "Codigo esta sirviendo";
+	echo "Codigo esta sirviendo";
 
 ?>
