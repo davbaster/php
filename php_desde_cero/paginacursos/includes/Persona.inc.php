@@ -13,11 +13,17 @@
 		}
 
 		public function bienvenida(){
-			echo "Hola {$this->nombre}, espero que te lleguen los correos a {$this->$email}";
+		echo "Hola {$this->nombre} {$this->apellido}, espero que te lleguen los correos a {$this->email}";
+		}
+
+		public function despedida(){
+			echo "Hola {$this->nombre} {$this->apellido}, gracias por estar con nosotros.";
 		}
 	}
 
-	$david = new Persona("David", "Cordoba", "cajina@gmail.com");
-	$david.bienvenida();
+	// $david = new Persona("David", "Cordoba", "cajina@gmail.com");
+	// $david->bienvenida();
+	// echo "hola";
+	
 
 ?>
