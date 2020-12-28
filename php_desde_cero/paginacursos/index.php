@@ -45,6 +45,14 @@
 
 		$estudiante1->bienvenida();
 
+		$visitante1 = new Visitante("David","Cordoba","cajina@gmail.com","Costa Rica", 001);
+
+		$visitante1->despedida();
+
+		$curso1 = new Frontend("Node.js", "David", 3, 10, "Si");
+
+		echo $curso1->valorCurso3Meses(10);
+
 	?>
 	
 </body>

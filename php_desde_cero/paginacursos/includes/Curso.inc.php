@@ -12,8 +12,18 @@ interface Conocimiento {
 	public function obtenerConocimiento();
 }
 
+trait calculadora {
+	
+	function valorCurso3Meses($costo){
+		$total = $costo * 3;
+		return "<br />El costo por tres meses es {$total}";
+	}
+}
+
 
 class Curso  implements Requerimiento, Conocimiento {
+
+	use calculadora;
 
 	private $titulo;
 	private $duracion;

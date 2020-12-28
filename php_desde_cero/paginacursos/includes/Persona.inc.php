@@ -13,7 +13,7 @@
 		}
 
 		public function bienvenida(){
-		echo "Hola {$this->nombre} {$this->apellido}, espero que te lleguen los correos a {$this->email}";
+		echo "Hola {$this->nombre} {$this->apellido}, espero que te lleguen los correos a {$this->email}.<br />";
 		}
 
 		public function despedida(){
