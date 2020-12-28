@@ -2,6 +2,7 @@
 
 #interfaces->interface
 interface Requerimiento {
+	
 	public function asignarRequerimiento($listado);
 	public function obtenerRequerimiento();
 }
@@ -20,6 +21,10 @@ class Curso  implements Requerimiento, Conocimiento {
 	private $moneda;
 	private $profesor;
 	private $disponible;
+	private $listadoRequerimientos;
+	private $listadoConocimientos;
+
+
 
 
 	#creando constructor
@@ -67,31 +72,33 @@ class Curso  implements Requerimiento, Conocimiento {
 
 	#interfaces metodos
 	public function asignarRequerimiento($listado){
-		$this->listado = $listado;
+		$this->listadoRequerimientos = $listado;
 	}
 
 	public function obtenerRequerimiento(){
-		if (!empty($this->listado)) {
-			foreach ($this->listado as $elemento) {
-				echo "<p>".$eleemnto."</p>";
+		if (!empty($this->listadoRequerimientos)) {
+			// var_dump($this->listadoRequerimientos);
+			foreach ($this->listadoRequerimientos as $requerimiento) {
+				echo "<p>".$requerimiento."</p>";
 			}
 		}else{
 
-				echo "<p>".$lista."</p>";
+				echo "<p>".$requerimiento."</p>";
 		}
 	}
 
 	public function asignarConocimiento($listado){
 
-		$this->conocimientos = $listado;
+		$this->listadoConocimientos = $listado;
 	}
 	public function obtenerConocimiento(){
-		if(!empty($this->conocimiento)){
-			foreach ($conocimientos as $conocimiento) {
+		
+		if(!empty($this->listadoConocimientos)){
+			foreach ($this->listadoConocimientos as $conocimiento) {
 				echo "<p>".$conocimiento."</p>";
 			}
 		}else{
-			echo "<p>".$lista."</p>";
+			echo "<p>".$conocimiento."</p>";
 		}
 	}
 
@@ -103,6 +110,6 @@ class Curso  implements Requerimiento, Conocimiento {
 	// $curso3 = new Curso('POO en PHP', 'David Cordoba', '3 Sesiones', 10, true); 
 	// echo $curso3->obtenerTitulo();
 
-	echo "Codigo esta sirviendo";
+	// echo "Codigo esta sirviendo";
 
 ?>
