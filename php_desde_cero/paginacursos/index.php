@@ -41,7 +41,7 @@
 		// Incluyendo mi archivo global, que tiene todas las clases que nnecesito
 		require_once __DIR__ . '/includes/Global.inc.php';
 
-		$estudiante1 = new Estudiante("David","Cordoba","cajina@gmail","Costa Rica");
+		$estudiante1 = new Estudiante("David","Cordoba","davbaster@gmail.com","Costa Rica");
 
 		$estudiante1->bienvenida();
 

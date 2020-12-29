@@ -7,9 +7,15 @@
 		public $email;
 
 		public function __construct($nombre, $apellido, $email){
-			$this->nombre = $nombre;
-			$this->apellido = $apellido;
+			if($this->esNombreValido($nombre)){
+				$this->nombre = $nombre;
+			}
+			if($this->esNombreValido($apellido)){
+				$this->apellido = $apellido;
+			}
+
 			if ($this->esCorreoValido($email)){
+				echo "<br /> Respuesta: ".$this->esCorreoValido($email)."<br />";
 				$this->email = $email;
 			}
 			
@@ -37,43 +43,53 @@
 		// VALIDACIONES
 		// validar nombre
 		private function esNombreValido($nombre){
+			$esNombreValido = true;
 
 			try{
 
-				if(empty($nombre)){
+				if (!preg_match("/^[a-zA-Z-' ]*$/",$nombre)) {
+  					$nameErr = "Solo letras y espacios en blanco son permitidos / Only letters and white space allowed <br />";
+  					$esNombreValido = false;
 					throw new Exception("Tiene que ingresar un nombre valido");
 					  
-				}else{
-					//todavia no hemos decidido que va a pasar aqui
-					return true;
 				}
+				
 
 			}catch ( Exception $error){
 
 				echo $error->getMessage();
-				return false;
+				
 			}
+
+			return $esNombreValido;
 		}
 
 		// validar correo
+		//formato correos validos: test@host, test@host.something
 		private function esCorreoValido($email){
-
+			$esValido = true; //valor por defecto
 			try{
 
-				if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					echo "Escriba un formato de correo valido<br />";
+					$esValido = false; //valor si formato invalido
 					throw new Exception("Correo no valido");
+
 				}
-				return true;
+				
+
 			}catch (Exception $e ){
 
 				$e->getMessage();
-				return false;
+				
 			}
+
+			return $esValido;
 			
-		}
+		}//fin esCorreoV
 
 
-	}
+	}//fin clase
 
 
 	// echo "hola";
