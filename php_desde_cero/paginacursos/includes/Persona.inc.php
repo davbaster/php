@@ -9,7 +9,10 @@
 		public function __construct($nombre, $apellido, $email){
 			$this->nombre = $nombre;
 			$this->apellido = $apellido;
-			$this->email = $email;
+			if ($this->esCorreoValido($email)){
+				$this->email = $email;
+			}
+			
 		}
 
 		public function bienvenida(){
@@ -30,6 +33,9 @@
 
 		}
 
+
+		// VALIDACIONES
+		// validar nombre
 		private function esNombreValido($nombre){
 
 			try{
@@ -48,6 +54,25 @@
 				return false;
 			}
 		}
+
+		// validar correo
+		private function esCorreoValido($email){
+
+			try{
+
+				if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+					throw new Exception("Correo no valido");
+				}
+				return true;
+			}catch (Exception $e ){
+
+				$e->getMessage();
+				return false;
+			}
+			
+		}
+
+
 	}
 
 
