@@ -53,6 +53,11 @@
 
 		echo $curso1->valorCurso3Meses(10);
 
+
+		$estudiante1->asignarNombre("Enrique");
+		
+
+
 	?>
 	
 </body>
