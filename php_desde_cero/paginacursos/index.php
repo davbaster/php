@@ -6,7 +6,7 @@
 	<title>Cursos de programacion</title>
 </head>
 <body>
-	<h1>Cursos de programacion</h1>
+	<h1>Bases de datos con PHP</h1>
 
 	<?php
 
@@ -39,24 +39,31 @@
 
 
 		// Incluyendo mi archivo global, que tiene todas las clases que nnecesito
+		// require_once __DIR__ . '/includes/Global.inc.php';
+
+		// $estudiante1 = new Estudiante("David","Cordoba","davbaster@gmail.com","Costa Rica");
+
+		// $estudiante1->bienvenida();
+
+		// $visitante1 = new Visitante("David","Cordoba","cajina@gmail","Costa Rica", 001);
+
+		// $visitante1->despedida();
+
+		// $curso1 = new Frontend("Node.js", "David", 3, 10, "Si");
+
+		// echo $curso1->valorCurso3Meses(10);
+
+
+		// $estudiante1->asignarNombre("Enrique");
+		
+		// Incluyendo mi archivo global, que tiene todas las clases que nnecesito
 		require_once __DIR__ . '/includes/Global.inc.php';
 
-		$estudiante1 = new Estudiante("David","Cordoba","davbaster@gmail.com","Costa Rica");
-
-		$estudiante1->bienvenida();
-
-		$visitante1 = new Visitante("David","Cordoba","cajina@gmail","Costa Rica", 001);
-
-		$visitante1->despedida();
-
-		$curso1 = new Frontend("Node.js", "David", 3, 10, "Si");
-
-		echo $curso1->valorCurso3Meses(10);
-
-
-		$estudiante1->asignarNombre("Enrique");
-		
-
+		$conecta = conecta();
+		if ($conecta == true) {
+			echo "<h3>La conexion a la base de datos fue hecha exitosamente.</h3>";
+			# code...
+		}
 
 	?>
 	
