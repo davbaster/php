@@ -15,7 +15,6 @@
 			}
 
 			if ($this->esCorreoValido($email)){
-				echo "<br /> Respuesta: ".$this->esCorreoValido($email)."<br />";
 				$this->email = $email;
 			}
 			
