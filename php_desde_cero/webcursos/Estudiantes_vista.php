@@ -35,8 +35,8 @@
 
 		// var_dump($alumno);
 
-		$respuesta = $estudiante->insertar($alumno1);
-		// echo "<br /> Respuesta del insertar Estudiantes_vista.php: $respuesta <br />";
+		$respuesta = $estudiante->insertar($alumno2);
+		echo "<br /> Respuesta del insertar Estudiantes_vista.php: $respuesta <br />";
 		if ($respuesta == true) {
 			echo "<br />Se ha insertado";
 		} else {
@@ -47,10 +47,11 @@
 
 	<h3>R: Leer/Consultar</h3>
 	<?php
-		/*$resultados = $estudiante->consultar();
+		$resultados = $estudiante->consultar();
+		// var_dump($resultados)
 		foreach ($resultados as $estudiante) {
 			echo $estudiante['nombre']." ".$estudiante['paterno']."<br />";
-		}*/
+		}
 	?>
 
 	<h3>U: Actualizar</h3>
@@ -71,8 +72,8 @@
 
 	<?php
 
-		$alumno = ['email' => 'silvercorp@gmail.com'];
-		$estudiante->eliminar('todos', $alumno);
+		// $alumno = ['email' => 'silvercorp@gmail.com'];
+		// $estudiante->eliminar('todos', $alumno);
 
 	?>
 

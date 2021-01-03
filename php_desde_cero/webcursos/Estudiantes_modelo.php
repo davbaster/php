@@ -33,9 +33,9 @@
 				$stmt->bindParam(':email', $email);
 				// Excecute
 				$stmt->execute();
+				//obteniendo ID de fila
 				 $id = $dbh->lastInsertId();
-				 $stmt->execute();//no sirve solo con el execute, el commit da un error pero hace que la fila sea insertada.
-				 echo "mostrando... ".$id;
+				echo "mostrando... ".$id;
 
 				// #echo "He insertado el registro";
 				return true;
@@ -50,7 +50,7 @@
 			try {
 				#SELECT * FROM nombre_tabla;
 				$query = "SELECT * FROM estudiantes";
-				#return $consulta = $conexion->query($query)->fetch();
+				#return $consulta = $conexion->query($query)->fetch(); #selecciona primer registro
 				return $consulta = $conexion->query($query)->fetchAll();
 			} catch (Exception $e) {
 				exit("ERROR: ".$e->getMessage());
