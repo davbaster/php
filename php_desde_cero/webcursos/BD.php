@@ -1,13 +1,13 @@
 <?php
 	const DB = 'mysql';
    	const DB_SERVIDOR = 'localhost';
-   	const DB_CHARSET = 'utf8';
+   	const DB_CHARSET = 'utf8';//evita problemas ingles
 
 	abstract class BD {
-		private static $db_usuario = 'homestead';
-		private static $db_pass = 'secret';
+		private static $db_usuario = 'root';
+		private static $db_pass = '';
 		private static $db_servidor = DB_SERVIDOR;
-		private static $db_nombre = 'pruebas';
+		private static $db_nombre = 'cursophp';
 		private static $db_charset = DB_CHARSET;
 		private $conexion; #Conectar con la BD
 

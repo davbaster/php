@@ -12,19 +12,36 @@
 		private $tabla = 'estudiantes';
 
 		public function insertar($registro) {
-			$conexion = parent::conectar();
+			//$dbh es la conexion bd
+			$dbh = parent::conectar();
 			try {
-				#INSERT INTO nombre_tabla (columna1, columna2, columna3,...) VALUES (valor1, valor2, valor3, ...);
-				$query = "INSERT INTO estudiantes SET nombre=:nombre, paterno=:paterno, materno=:materno, email=:email";
-				#prepare - Preparación de la ejecución
-				#execute - Efectua la ejecución
+				
 
-				$insertar = $conexion->prepare($query)->execute($registro);
+				// Prepare
+				$stmt = $dbh->prepare("INSERT INTO estudiantes (nombre, paterno, materno, email) VALUES (:nombre, :paterno, :materno, :email)");
 
-				#echo "He insertado el registro";
+				//ATRIBUTES
+				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				// Bind
+				$nombre = $registro['nombre'];
+				$paterno = $registro['paterno'];
+				$materno = $registro['materno'];
+				$email = $registro['email'];
+				$stmt->bindParam(':nombre', $nombre);
+				$stmt->bindParam(':paterno', $paterno);
+				$stmt->bindParam(':materno', $materno);
+				$stmt->bindParam(':email', $email);
+				// Excecute
+				$stmt->execute();
+				 $id = $dbh->lastInsertId();
+				 $stmt->execute();//no sirve solo con el execute, el commit da un error pero hace que la fila sea insertada.
+				 echo "mostrando... ".$id;
+
+				// #echo "He insertado el registro";
 				return true;
+
 			} catch (Exception $e) {
-				exit("ERROR: ".$e->getMessage());
+				exit("ERROR: Linea 38 ".$e->getMessage());
 			}
 		}
 

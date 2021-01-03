@@ -1,6 +1,5 @@
 <?php
-	require_once 'Estudiantes_modelo.php';
-	$estudiante = new Estudiantes_modelo();
+	
 ?>
 
 <!DOCTYPE html>
@@ -17,18 +16,31 @@
 	<h3>C: Insertar</h3>
 	<?php
 
-		/*$alumno = [
-			'nombre'  => 'Roberto',
-			'paterno' => 'Hodgson',
-			'materno' => 'C',
-			'email'   => 'rb@gmail.com'
-		];*/
+		require_once 'Estudiantes_modelo.php';
+		$estudiante = new Estudiantes_modelo();
 
-		$respuesta = $estudiante->insertar($alumno);
+		$alumno1 = [
+			'nombre'  => 'David',
+			'paterno' => 'Cordoba',
+			'materno' => 'C',
+			'email'   => 'cajina@gmail.com'
+		];
+
+		$alumno2 = [
+			'nombre'  => 'Oscar',
+			'paterno' => 'Castro',
+			'materno' => 'V',
+			'email'   => 'oscavi@gmail.com'
+		];
+
+		// var_dump($alumno);
+
+		$respuesta = $estudiante->insertar($alumno1);
+		// echo "<br /> Respuesta del insertar Estudiantes_vista.php: $respuesta <br />";
 		if ($respuesta == true) {
-			echo "Se ha insertado";
+			echo "<br />Se ha insertado";
 		} else {
-			echo "Hay un error";
+			echo "<br />Hay un error";
 		}
 
 	?>

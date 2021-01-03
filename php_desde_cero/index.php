@@ -11,13 +11,13 @@
 	<a href="#">Profesores</a>
 	<a href="#">Cursos</a>
 
-<?php  
-
-	echo "<br/ >BD drivers disponibles: <br/ >";
-	var_dump( PDO::getAvailableDrivers() ); 
-	
-
-?>
 
 </body>
 </html>
+
+<?php  
+
+	echo var_dump( PDO::getAvailableDrivers() ); 
+	echo "codigo esta corriendo";
+
+?>
