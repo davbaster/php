@@ -16,9 +16,8 @@
 			$dbh = parent::conectar();
 			try {
 				
-
 				// Prepare
-				$stmt = $dbh->prepare("INSERT INTO estudiantes (nombre, paterno, materno, email) VALUES (:nombre, :paterno, :materno, :email)");
+				$stmt = $dbh->prepare("INSERT INTO {$this->tabla} (nombre, paterno, materno, email) VALUES (:nombre, :paterno, :materno, :email)");
 
 				//ATRIBUTES para decidir que tipos de errores mostrar
 				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,6 +49,7 @@
 				   }
 			}
 		}
+		/*MUESTRA TODOS LOS REGISTROS DE LA DB*/
 		public function consultar() {
 			$conexion = parent::conectar();
 			try {
@@ -62,12 +62,29 @@
 			}
 		}
 
+		//actualiza registros usando el email como key
 		public function actualizar($registro) {
 			#UPDATE nombre_tabla SET col1 = valor1, col2 = valor2, col3 = valor3 WHERE condicion;
 			$conexion = parent::conectar();
 			try {
 				$query = "UPDATE estudiantes SET nombre=:nombre, paterno=:paterno, materno=:materno WHERE email=:email;";
-				$actualizar = $conexion->prepare($query)->execute($registro);
+				$stmt = $conexion->prepare($query);
+				$stmt->execute($registro);
+
+				//cuenta los row afectados por el sql statement
+				$count = $stmt->rowCount(); 
+
+
+				if ($count > 0){//si es mayor a cero, borro la fila
+					echo "<br />Se ha actualizado el registro satisfactoriamente. <br />";
+					$actualizado = true;
+				}else{
+					echo "<br />No se ha podido actualizar el registro. <br />";
+					$actualizado = false;
+				}
+
+				return $actualizado;//return true if registro actualizado
+
 			} catch (Exception $e) {
 				exit("ERROR: ".$e->getMessage());
 			}
@@ -118,8 +135,6 @@
 						$eliminado = false;
 					}
 
-					
-					#$query = "DELETE FROM estudiantes WHERE email=".$eliminar['email'];
 					return $eliminado;
 				} catch (Exception $e) {
 					exit("ERROR: ".$e->getMessage());
