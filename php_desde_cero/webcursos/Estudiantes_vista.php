@@ -33,47 +33,62 @@
 			'email'   => 'oscavi@gmail.com'
 		];
 
-		// var_dump($alumno);
+		/*INSERTANDO UN REGISTRO*/
 
 		$respuesta = $estudiante->insertar($alumno2);
-		echo "<br /> Respuesta del insertar Estudiantes_vista.php: $respuesta <br />";
-		if ($respuesta == true) {
-			echo "<br />Se ha insertado";
+		// echo "<br /> Respuesta del insertar Estudiantes_vista.php: $respuesta <br />";
+		if ($respuesta > 0) {
+			//logica a seguir si se pudo insertar
 		} else {
-			echo "<br />Hay un error";
+			//logica a seguir si no se pudo insertar
 		}
 
 	?>
 
 	<h3>R: Leer/Consultar</h3>
 	<?php
+
+		/*HACIENDO CONSULTAS DE REGISTRO*/
+
 		$resultados = $estudiante->consultar();
 		// var_dump($resultados)
-		foreach ($resultados as $estudiante) {
-			echo $estudiante['nombre']." ".$estudiante['paterno']."<br />";
+		foreach ($resultados as $sujeto) {
+			echo $sujeto['nombre']." ".$sujeto['paterno']."<br />";
 		}
 	?>
 
 	<h3>U: Actualizar</h3>
 
-	<?php
+	 <?php 
+	 	/*ACTUALIZANDO UN REGISTRO*/
 
-		/*$alumno = [
-			'nombre' => 'Yesi',
-			'paterno' => 'Days.',
-			'materno' => 'B.',
-			'email' => 'silvercorp@gmail.com'
-		];
-		$estudiante->actualizar($alumno);*/
+		// $alumno = [
+		// 	'nombre' => 'Alberto',
+		// 	'paterno' => 'Castro',
+		// 	'materno' => 'V.',
+		// 	'email' => 'oscavi@gmail.com'];
+		// $estudiante->actualizar($alumno);
 
-	?>
+		//logica a seguir si no pudo actualizar?
+
+	?> 
 
 	<h3>D: Eliminar</h3>
 
 	<?php
 
-		// $alumno = ['email' => 'silvercorp@gmail.com'];
-		// $estudiante->eliminar('todos', $alumno);
+		/*ELIMINANDO REGISTROS*/
+
+		/*ELIMINANDO REGISTRO ESPECIFICO*/
+		// $alumno = ['email' => 'cajina@gmail.com'];
+		// $alumno = ['email' => 'oscavi@gmail.com'];
+		// $estado = 
+		// $estudiante->eliminar('',$alumno);
+
+		/*ELIMINANDO TODOS LOS REGISTROS*/
+		// $estudiante->eliminar('todos', '');
+
+		//logica a seguir si no pudo insertar?
 
 	?>
 

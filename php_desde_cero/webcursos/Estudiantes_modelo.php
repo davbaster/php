@@ -20,7 +20,7 @@
 				// Prepare
 				$stmt = $dbh->prepare("INSERT INTO estudiantes (nombre, paterno, materno, email) VALUES (:nombre, :paterno, :materno, :email)");
 
-				//ATRIBUTES
+				//ATRIBUTES para decidir que tipos de errores mostrar
 				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				// Bind
 				$nombre = $registro['nombre'];
@@ -38,13 +38,18 @@
 				echo "mostrando... ".$id;
 
 				// #echo "He insertado el registro";
-				return true;
+				return true;//se ha insertado satisfactoriamente
 
-			} catch (Exception $e) {
-				exit("ERROR: Linea 38 ".$e->getMessage());
+			} catch (PDOException $e) {
+				   if ($e->errorInfo[1] == 1062) {
+				      // duplicate entry, do something else
+				   	echo "<br />Email ya existe en el sistema. Por favor use otro email.<br />";
+				   } else {
+				      // an error other than duplicate entry occurred
+				   	echo "<br />Error: ".$e.getMessage()."<br />";
+				   }
 			}
 		}
-
 		public function consultar() {
 			$conexion = parent::conectar();
 			try {
@@ -71,19 +76,51 @@
 		public function eliminar($accion, $eliminar) {
 			#DELETE FROM nombre_tabla WHERE condicion;
 			$conexion = parent::conectar();
-			if ($accion == 'todos') {
+			if ($accion === 'todos') {
 				try {
 					$query = "DELETE FROM estudiantes";
-					$eliminar = $conexion->prepare($query)->execute();
+					//cuando el execute no tiene parametro, se elimina toda la informacion.
+					$eliminado = $conexion->prepare($query)->execute();
+					//cuenta los row afectados por el sql statement
+					$count = $stmt->rowCount(); 
+
+
+					if ($count > 0){//si es mayor a cero, borro la fila
+						echo "<br />Se han elminado todos los registros. <br />";
+						$eliminado = true;
+					}else{
+						echo "<br />No se ha podido eliminar los registros. <br />";
+						$eliminado = false;
+					}
+
+					return $eliminado;
+
 				} catch (Exception $e) {
-					exit("ERROR: ".$e->getMessage());
+					exit("ERROR Line 94: ".$e->getMessage());
 				}
 			} else {
 				try {
+
 					$query = "DELETE FROM estudiantes WHERE email=:email";
-					$eliminar = $conexion->prepare($query)->execute($eliminar);
-					echo "He eliminado";
+					//se ejecuta basandose en el email contenido en $eliminar
+					$stmt = $conexion->prepare($query);
+					$stmt->execute($eliminar);
+
+					//cuenta los row afectados por el sql statement
+					$count = $stmt->rowCount(); 
+
+
+					if ($count > 0){//si es mayor a cero, borro la fila
+						echo "<br />He eliminado {$eliminar['email']}<br />";
+						$eliminado = true;
+					}else{
+						echo "<br />No se ha podido eliminar {$eliminar['email']}<br />";
+						$eliminado = false;
+					}
+
+					
 					#$query = "DELETE FROM estudiantes WHERE email=".$eliminar['email'];
+					return $eliminado;
 				} catch (Exception $e) {
 					exit("ERROR: ".$e->getMessage());
 				}
