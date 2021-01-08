@@ -105,18 +105,18 @@
 
 		/*ELIMINANDO REGISTRO ESPECIFICO*/
 		// $alumno = ['email' => 'cajina@gmail.com'];
-		$alumno = ['email' => 'mariaa@gmail.com'];
-		$estado = 
-		$eliminado =$estudiante->eliminar('',$alumno);
+		// $alumno = ['email' => 'mariaa@gmail.com'];
+		// $estado = 
+		// $eliminado =$estudiante->eliminar('',$alumno);
 
-		/*ELIMINANDO TODOS LOS REGISTROS*/
-		// $eliminado = $estudiante->eliminar('todos', '');
+		// /*ELIMINANDO TODOS LOS REGISTROS*/
+		// // $eliminado = $estudiante->eliminar('todos', '');
 
-		//logica si se pudo eliminar
-		if ($eliminado){
-			echo "<br />**TABLA ACTUALIZADA**<br />";
-			imprimirEstudiantes();
-		}
+		// //logica si se pudo eliminar
+		// if ($eliminado){
+		// 	echo "<br />**TABLA ACTUALIZADA**<br />";
+		// 	imprimirEstudiantes();
+		// }
 
 		//logica a seguir si no pudo eliminar?
 
